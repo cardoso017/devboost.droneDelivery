@@ -10,13 +10,20 @@ namespace devboost.dronedelivery.Repository.Context
 {
     public class DataContext : DbContext
     {
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<Drone> Drone { get; set; }
         public DbSet<Pedido> Pedido { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=DroneDelivery;Trusted_Connection=True;MultipleActiveResultSets=true");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(
+        //           @"my connection string",
+        //           x => x.UseNetTopologySuite());
+        //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,4 +1,5 @@
-﻿using devboost.dronedelivery.Model;
+﻿using devboost.dronedelivery.DTO;
+using devboost.dronedelivery.Model;
 using devboost.dronedelivery.Repository;
 using GeoLocation;
 using System;
@@ -23,8 +24,17 @@ namespace devboost.dronedelivery.Service
             _droneRepository = droneRepository;
         }
 
-        public async void RealizarPedido(Pedido pedido) 
+        public async Task<Pedido> RealizarPedido(PedidoDTO pedidoDto) 
         {
+            var longlat = $"POINT({pedidoDto.Latitude} {pedidoDto.Longitude})".Replace(",", ".");
+
+            var pedido = new Pedido();
+            pedido.Id = Guid.NewGuid();
+            pedido.DataHora = DateTime.Now;
+            pedido.LatLong = DbGeography.FromText(longlat);
+            pedido.Peso = pedidoDto.Peso;
+            pedido.StatusPedido = StatusPedido.aguardandoAprovacao;
+
             using (var trans = new TransactionScope())
             {
                 //Verificar a distância entre Origem e Destindo (Pedido)
@@ -59,6 +69,7 @@ namespace devboost.dronedelivery.Service
                     _pedidoRepository.UpdatePedido(pedido);
                 }
                 trans.Complete();
+                return pedido;
             }
         }
     }
