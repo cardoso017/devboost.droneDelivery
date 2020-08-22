@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,13 +10,12 @@ namespace devboost.dronedelivery.Model
     {
         public Guid Id { get; set; }
         public int Peso { get; set; }
-        //todo: trocar o tipo para geograph
-        public double LatLong { get; set; }
+        public DbGeography LatLong { get; set; }
         public DateTime DataHora { get; set; }
         public int DroneId { get; set; }
         public Drone Drone { get; set; }
 
-        public StatusPedido statusPedido { get; set; }
+        public StatusPedido StatusPedido { get; set; }
     }
 
     public enum StatusPedido
