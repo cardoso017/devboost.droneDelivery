@@ -18,9 +18,10 @@ namespace devboost.dronedelivery.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<string>> Get()
+        public async Task<ActionResult> Get()
         {
-            return await Task.FromResult(Ok("api Ok"));
+            var result = await _pedidoService.BuscarDrone();
+            return Ok(result);
         }
 
         [HttpPost]

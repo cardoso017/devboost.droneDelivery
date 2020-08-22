@@ -3,6 +3,7 @@ using devboost.dronedelivery.Model;
 using devboost.dronedelivery.Repository;
 using GeoLocation;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -22,6 +23,11 @@ namespace devboost.dronedelivery.Service
         {
             _pedidoRepository = pedidoRepository;
             _droneRepository = droneRepository;
+        }
+
+        public async Task<List<Drone>> BuscarDrone()
+        {
+            return await _droneRepository.GetAll();
         }
 
         public async Task<Pedido> RealizarPedido(PedidoDTO pedidoDto)
