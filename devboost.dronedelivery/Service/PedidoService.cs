@@ -13,8 +13,8 @@ namespace devboost.dronedelivery.Service
     public class PedidoService
     {
         //readonly static DbGeography LOCATION_ORIGINB = DbGeography.FromText("POINT(-23.5880684 -46.6564195)");
-        const double longitude = -23.5880684;
-        const double latitude = -46.6564195;
+        const double latitude = -23.5880684;
+        const double longitude = -46.6564195;
 
         readonly PedidoRepository _pedidoRepository;
         readonly DroneRepository _droneRepository;
