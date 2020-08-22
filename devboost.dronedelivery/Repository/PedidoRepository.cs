@@ -16,13 +16,13 @@ namespace devboost.dronedelivery.Repository
             _dataContext = dataContext;
         }
 
-        public async void AddPedido(Pedido pedido)
+        public async Task AddPedido(Pedido pedido)
         {
             _dataContext.Pedido.Add(pedido);
             await _dataContext.SaveChangesAsync();
         }
 
-        public async void UpdatePedido(Pedido pedido)
+        public async Task UpdatePedido(Pedido pedido)
         {
             _dataContext.Pedido.Update(pedido);
             await _dataContext.SaveChangesAsync();

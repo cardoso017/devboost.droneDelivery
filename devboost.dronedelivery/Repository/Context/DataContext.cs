@@ -28,6 +28,7 @@ namespace devboost.dronedelivery.Repository.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Drone>().HasKey(x => x.Id);
+            builder.Entity<Drone>().Property(x => x.StatusDrone).HasColumnName("Status");
 
             builder.Entity<Pedido>().HasKey(x => x.Id);
 

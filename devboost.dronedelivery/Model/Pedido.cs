@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Spatial;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.Model
 {
@@ -10,9 +6,11 @@ namespace devboost.dronedelivery.Model
     {
         public Guid Id { get; set; }
         public int Peso { get; set; }
-        public DbGeography LatLong { get; set; }
+        //public SqlGeography LatLong { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public DateTime DataHora { get; set; }
-        public int DroneId { get; set; }
+        public int? DroneId { get; set; }
         public Drone Drone { get; set; }
 
         public StatusPedido StatusPedido { get; set; }

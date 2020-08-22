@@ -1,14 +1,8 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data.Entity.Spatial;
-using System.Linq;
-using System.Threading.Tasks;
-using devboost.dronedelivery.DTO;
+﻿using devboost.dronedelivery.DTO;
 using devboost.dronedelivery.Model;
 using devboost.dronedelivery.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace devboost.dronedelivery.Controllers
 {
@@ -30,20 +24,20 @@ namespace devboost.dronedelivery.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> Post([FromBody] PedidoDTO pedidoDto)
+        public async Task<ActionResult> Post([FromBody] PedidoDTO pedidoDto)
         {
-            try
-            {
-               
-                var result = await _pedidoService.RealizarPedido(pedidoDto);
+            //try
+            //{
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-            
+            var result = await _pedidoService.RealizarPedido(pedidoDto);
+
+            return Ok(result);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex);
+            //}
+
         }
 
     }
